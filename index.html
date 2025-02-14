@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Valentine's Day Card</title>
+			<style>
+
+				/* General Body Styling */
+				body {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 100vh;
+					background: #fdb9c8;
+					font-family: 'Arial', sans-serif;
+				}		
+				
+				.container {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-evenly;
+					align-items: center;
+					width: 80%;
+					max-width: 1200px;
+				}
+
+
+
+				/* Scene Wrapper */
+				.scene {
+					perspective: 1000px;
+				}
+
+				/* Card Container */
+				.card {
+					width: 300px;
+					height: 400px;
+					position: relative;
+					transform-style: preserve-3d;
+					transition: transform 1s ease-in-out;
+					cursor: pointer;
+				}
+
+				/* Card Faces (Front & Back) */
+				.card-face {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: white;
+					border-radius: 10px;
+					box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+					backface-visibility: hidden;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+
+				/* Front Cover Image */
+				.card-front img {
+					width: 100%;
+					border-radius: 10px;
+				}
+
+				/* Back Cover */
+				.card-back {
+					background: white;
+					transform: rotateY(180deg);
+					padding: 20px;
+					text-align: center;
+				}
+
+				/* Inner Content */
+				.inner-content {
+					font-size: 14px;
+					color: #333;
+				}
+
+				/* Signature */
+				.signature {
+					font-style: italic;
+					font-weight: bold;
+					margin-top: 15px;
+				}
+
+				/* Flip Effect */
+				.card.flipped {
+					transform: rotateY(180deg);
+				}
+
+				.heart {
+					height: 70px;
+					width: 70px;
+					background: #f20044;
+					position: relative;
+					transform: rotate(-45deg);
+					box-shadow: -10px 10px 90px #f20044;
+					animation: heart 0.6s linear infinite;
+				}
+
+				@keyframes heart {
+					0% {
+						transform: rotate(-45deg) scale(1.07);
+					}
+					80% {
+						transform: rotate(-45deg) scale(1.0);
+					}
+					100% {
+						transform: rotate(-45deg) scale(0.8);
+					}
+				}
+
+				.heart::before {
+					content: '';
+					position: absolute;
+					height: 70px;
+					width: 70px;
+					background: #f20044;
+					top: -50%;
+					border-radius: 50px;
+					box-shadow: -10px -10px 90px #f20044;
+				}
+
+				.heart::after {
+					content: '';
+					position: absolute;
+					height: 70px;
+					width: 70px;
+					background: #f20044;
+					right: -50%;
+					border-radius: 50px;
+					box-shadow: 10px 10px 90px #f20044;
+				}
+
+
+			</style>
+
+		</head>
+
+		<body>
+
+			<div class="container">
+					<div class="heart"></div>
+					<h1>I love you</h1>
+
+				
+					<div class="scene">
+						<div class="card" onclick="flipCard()">
+							<div class="card-face card-front">
+								<img src="ruth_valentines.jpeg" alt="Front Cover">
+							</div>
+							<div class="card-face card-back">
+								<div class="inner-content">
+									<h3>Happy Valentine's Day</h3>
+										<p>Ruth 😍😍</p>
+										<p>
+											Ever since I met you, my life has been nothing but amazing.<br>
+											I can't even begin to imagine it without you.<br>
+											I have wanted you since I first laid eyes on you.<br>
+											I wanted you every single day after that.<br>
+											I will continue to want you for as long as I breathe.<br>
+											I want you for eternity.<br>
+											Here is to our first V-day of many.<br>
+											I cannot wait to celebrate every year with you until I am old and grey.<br>
+											Out of sight but never out of mind. 🥰 
+										</p>
+										<p class="signature">❤️ Munya</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			<script>
+				function flipCard() {
+					document.querySelector('.card').classList.toggle('flipped');
+				}
+			</script>
+		</body>
+</html>
+
